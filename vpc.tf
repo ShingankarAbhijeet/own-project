@@ -1,5 +1,5 @@
 resource "google_compute_network" "net" {
-  name    = "my-network"
+  name    = "cicd-network"
   project = var.project
 }
 
