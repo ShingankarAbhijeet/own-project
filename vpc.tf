@@ -66,7 +66,7 @@ resource "google_compute_instance" "default" {
 resource "google_compute_firewall" "default" {
   name    = "test-firewall"
   project = var.project
-  network = google_compute_network.net.name
+  network = google_compute_network.cicd-network.name
 
   allow {
     protocol = "icmp"
