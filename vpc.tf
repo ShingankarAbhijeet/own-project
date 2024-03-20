@@ -1,4 +1,4 @@
-resource "google_compute_network" "net" {
+resource "google_compute_network" "cicd-network" {
   name    = "cicd-network"
   project = var.project
 }
