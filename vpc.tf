@@ -5,7 +5,7 @@ resource "google_compute_network" "cicd-network" {
 
 resource "google_compute_subnetwork" "subnet" {
   name          = "my-subnetwork"
-  network       = google_compute_network.net.id
+  network       = google_compute_network.cicd-network.id
   ip_cidr_range = "10.0.0.0/16"
   region        = var.region
   project       = var.project
