@@ -1,11 +1,12 @@
-resource "google_compute_network" "cicd-network" {
-  name    = "cicd-network"
-  project = var.project
+resource "google_compute_network" "my_network" {
+  name    = "my-network"
+  project =  "just-aura-416511"
+  
 }
 
 resource "google_compute_subnetwork" "subnet" {
   name          = "my-subnetwork"
-  network       = google_compute_network.cicd-network.id
+  network       = google_compute_network.my_network.id
   ip_cidr_range = "10.0.0.0/16"
   region        = var.region
   project       = var.project
@@ -15,7 +16,7 @@ resource "google_compute_router" "router" {
   name    = "my-router"
   project = var.project
   region  = google_compute_subnetwork.subnet.region
-  network = google_compute_network.net.id
+  network = google_compute_network.my_network.id
 
   bgp {
     asn = 64514
@@ -43,10 +44,10 @@ resource "google_compute_instance" "default" {
   machine_type = "n2-standard-2"
   zone         = var.zone
   network_interface {
-    network    = google_compute_network.net.self_link
+    network    = google_compute_network.my_network.self_link
     subnetwork = google_compute_subnetwork.subnet.self_link
     access_config {
-      
+
     }
   }
   tags = ["foo", "bar"]
@@ -66,7 +67,7 @@ resource "google_compute_instance" "default" {
 resource "google_compute_firewall" "default" {
   name    = "test-firewall"
   project = var.project
-  network = google_compute_network.cicd-network.name
+  network = google_compute_network.my_network.name
 
   allow {
     protocol = "icmp"
@@ -74,9 +75,10 @@ resource "google_compute_firewall" "default" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "22", "443", "8080", "1000-2000","9000","9092"]
+    ports    = ["80", "22", "443", "8080", "1000-2000", "9000", "9092"]
   }
 
   source_ranges = ["0.0.0.0/0"]
 }
+
 
