@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    TF_CLI_CONFIG_FILE = '/root/.terraform.d/credentials.tfrc.json'
+    TF_CLI_CONFIG_FILE = '/tmp/credentials.tfrc.json'
     }
     triggers {
         githubPush ( )
