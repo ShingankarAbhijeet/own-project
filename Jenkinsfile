@@ -2,12 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        githubPush ( 
-          sourceId: "ShingankarAbhijeet/own-project",
-          branch: "main",
-          credentialsId: "github-cred",
-          event: "push"
-        )
+        githubPush ( )
     }
     stages {
         stage("checkout") {
