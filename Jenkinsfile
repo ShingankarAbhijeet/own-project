@@ -3,10 +3,10 @@ pipeline {
 
     triggers {
         githubPush ( 
-          sourceId "ShingankarAbhijeet/own-project"
-          branch "main"
-          credentialsId "github-cred"
-          event "push"
+          sourceId: "ShingankarAbhijeet/own-project",
+          branch: "main",
+          credentialsId: "github-cred",
+          event: "push"
         )
     }
     stages {
