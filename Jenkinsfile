@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     triggers {
-        githubPush //{
-          //sourceId "ShingankarAbhijeet/own-project"
-          //branch "main"
-          //credentialsId "github-cred"
-          //event "push"
-        //}
+        scm 
+          sourceId "ShingankarAbhijeet/own-project"
+          branch "main"
+          credentialsId "github-cred"
+          event "push"
+        
     }
     stages {
         stage("checkout") {
