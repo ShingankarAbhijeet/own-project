@@ -13,7 +13,7 @@ pipeline {
         stage("checkout") {
            steps {
             git branch: 'main',
-            credentialsID: 'github-cred',
+            credentialsId: 'github-cred',
             url: 'https://github.com/ShingankarAbhijeet/own-project.git'
            }
         }
