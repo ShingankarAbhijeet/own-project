@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        scm 
+        githubPush 
             sourceId "ShingankarAbhijeet/own-project"
             branch "main"
             credentialsId "github-cred"
