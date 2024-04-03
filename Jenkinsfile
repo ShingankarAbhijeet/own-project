@@ -14,17 +14,24 @@ pipeline {
         }
         stage("Terraform Init"){
            steps {
-            sh 'terraform init'
+             dir('own-project'){
+                            sh 'terraform init'
+             }
            }
+
         }
         stage("terraform plan"){
             steps{
-                sh ' terraform plan'
+                dir('own-project') {
+                  sh ' terraform plan'
+                }
             }
         }
         stage("terraform apply"){
             steps{
-                sh 'terraform apply -auto-approve'
+                dir('own-project'){
+                  sh 'terraform apply -auto-approve'
+                }
             }
         }
     
