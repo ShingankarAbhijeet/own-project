@@ -27,15 +27,14 @@ pipeline {
                 }
             }
         }
-       /// stage("terraform apply"){
-    ///        steps{
-       ///         dir('own-project'){
-          ///        sh 'terraform apply -auto-approve'
-             ///   }
+       stage("terraform apply"){
+            steps{
+                dir('own-project'){
+                  sh 'terraform apply -auto-approve'
+                }
             
-            ///}
-        ///}
+            }
+        }
     
     }
 }        
-    
