@@ -5,13 +5,16 @@ pipeline {
         githubPush ( )
     }
     stages {
-        stage("checkout") {
+        stage("clone") {
            steps {
-            git branch: 'main',
-            credentialsId: 'github-creds',
-            url: 'https://github.com/ShingankarAbhijeet/own-project.git'
+             dir('own-project') {
+                git branch: 'main',
+                credentialsId: 'github-creds',
+                url: 'https://github.com/ShingankarAbhijeet/own-project.git'
+             }
            }
         }
+        
         stage("Terraform Init"){
            steps {
              dir('own-project'){
@@ -30,7 +33,7 @@ pipeline {
        stage("terraform apply"){
             steps{
                 dir('own-project'){
-                  sh 'terraform apply -auto-approve'
+                  sh 'terraform apply'
                 }
             
             }
