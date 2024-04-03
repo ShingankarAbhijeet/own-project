@@ -5,7 +5,7 @@ pipeline {
         scm {
             sourceId "ShingankarAbhijeet/own-project"
             branch "main"
-            credentialsID "github-cred"
+            credentialsId "github-cred"
             event "push"
         }
     }
